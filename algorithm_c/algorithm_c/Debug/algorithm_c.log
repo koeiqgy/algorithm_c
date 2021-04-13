@@ -1,8 +1,15 @@
-﻿生成启动时间为 2021/3/17 13:13:41。
+﻿生成启动时间为 2021/4/12 11:15:03。
      1>项目“C:\Github\algorithm_c_sln\algorithm_c\algorithm_c\algorithm_c.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          C:\App\tool\vs2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:prompt ch1_basic.c
          ch1_basic.c
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(90): warning C4013: “system”未定义；假设外部返回 int
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(85): warning C4047: “初始化”:“char”与“char [6]”的间接级别不同
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(97): warning C4013: “malloc”未定义；假设外部返回 int
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(97): warning C4047: “初始化”:“char *”与“int”的间接级别不同
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(127): warning C4101: “c_arrs”: 未引用的局部变量
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(146): warning C4047: “初始化”:“char *”与“int”的间接级别不同
+     1>c:\github\algorithm_c_sln\algorithm_c\algorithm_c\ch1_basic.c(177): warning C4047: “初始化”:“char *”与“int”的间接级别不同
        Link:
          C:\App\tool\vs2015\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Github\algorithm_c_sln\algorithm_c\Debug\algorithm_c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Github\algorithm_c_sln\algorithm_c\Debug\algorithm_c.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Github\algorithm_c_sln\algorithm_c\Debug\algorithm_c.lib" /MACHINE:X86 Debug\ch1_basic.obj
          algorithm_c.vcxproj -> C:\Github\algorithm_c_sln\algorithm_c\Debug\algorithm_c.exe
@@ -10,4 +17,4 @@
 
 已成功生成。
 
-已用时间 00:00:01.16
+已用时间 00:00:00.51
