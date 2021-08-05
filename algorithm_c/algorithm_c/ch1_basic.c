@@ -58,11 +58,12 @@ int connective() {
 	int arrs_2_index = 0;
 	int p = ITEM_INIT_VAL;
 	int q = ITEM_INIT_VAL;
-	int flag = 1;
+	int flag = 1;//控制循环结束标记位
 	while (flag) {
 		//scanf 返回值代表匹配的数据个数
 		int ret = scanf("%d-%d", &p, &q);
 		if (ret == 2) {
+			//0-0代表结束标志
 			if (p==0 && q==0) {
 				flag = 0;
 			}
@@ -80,9 +81,16 @@ int connective() {
 			printf("program stop! scanf input format error! \n");
 		}
 	}
+	for (int i = 0;i <arrs_1_index;i++) {
+		printf("%s\n", path_arrs[i]);
+		//printf("%s \n", path_arrs[arrs_1_index]);
+	}
+
+	/*
 	char * str_ret=ret_str();
 	printf("%s\n",str_ret);
 	is_connect(path_arrs, ITEM_LENS, ITEM_ELE_LENS,str_ret,arrs_1_index);
+	*/
 	return 0;
 }
 
