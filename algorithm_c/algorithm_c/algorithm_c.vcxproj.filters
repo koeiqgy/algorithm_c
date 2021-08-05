@@ -18,5 +18,16 @@
     <ClCompile Include="ch1_basic.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="string_utils.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="string_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ch1_basic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
