@@ -1,4 +1,7 @@
 #pragma once
+#define ITEM_INIT_VAL -9999
+#define ITEM_LENS 40
+#define ITEM_ELE_LENS 10
 /*
 ch:
 question:
@@ -15,4 +18,4 @@ int   connective();
 /*
 判断是否连通 path_arrs:数据池数组,str:目标连接串, m:二维数组一维度, n:二维数组二维度, arrs_1_index第一维度数据的长度 
 */
-int is_connect(char *path_arrs, int m, int n, char *str, int arrs_1_index);
+int is_connect(char *path_arrs,int arrs_1_index);

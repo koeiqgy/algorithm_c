@@ -2,9 +2,6 @@
 #include<stdio.h>
 #include<string.h>
 #include"ch1_basic.h"
-#define ITEM_INIT_VAL -9999
-#define ITEM_LENS 40
-#define ITEM_ELE_LENS 10
 
 int main() {
 	connective();
@@ -12,7 +9,7 @@ int main() {
 	return 0;
 }
 
-int is_connect(char *path_arrs,int m,int n ,char *str,int arrs_1_index) {
+int is_connect(char *path_arrs,int arrs_1_index) {
 	int flag = 0;
 	char(*ptr_arrs)[ITEM_LENS][ITEM_ELE_LENS] = path_arrs;
 	printf("\n");
@@ -51,6 +48,30 @@ char* ret_str() {
 	return str;
 }
 
+//二维数组中的路径去重
+int remove_duplicate(char arrs[ITEM_LENS][ITEM_ELE_LENS],int arrs_1_index) {
+	int pds[ITEM_LENS][ITEM_ELE_LENS];
+	int index = 0;
+	for (int i = 0;i < arrs_1_index;i++) {
+		for (int j = 0;j < arrs_1_index;j++) {
+			if (strcmp(arrs[i], arrs[j]) == 0 && i!=j) {
+				int k = 0;
+				for (k = 0;k < index;k++) {
+					if ((pds[k][0]==i && pds[k][1]==j) || (pds[k][0]==j && pds[k][1]==i) ) {
+						break;
+					}
+				}
+				if (k == index) {
+					pds[index][0] = i;
+					pds[index][1] = j;
+					index++;
+					printf("%s\n", arrs[i]);
+				}
+			}
+		}
+	}
+}
+
 
 int connective() {
 	char path_arrs[ITEM_LENS][ITEM_ELE_LENS];
@@ -81,11 +102,15 @@ int connective() {
 			printf("program stop! scanf input format error! \n");
 		}
 	}
+	printf("\n");
+	
 	for (int i = 0;i <arrs_1_index;i++) {
 		printf("%s\n", path_arrs[i]);
 		//printf("%s \n", path_arrs[arrs_1_index]);
 	}
-
+	printf("---------------------------\n");
+	remove_duplicate(path_arrs, arrs_1_index);
+	//is_connect
 	/*
 	char * str_ret=ret_str();
 	printf("%s\n",str_ret);
