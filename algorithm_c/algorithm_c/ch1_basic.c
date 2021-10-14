@@ -49,34 +49,73 @@ char* ret_str() {
 }
 
 //二维数组中的路径去重
-int remove_duplicate(char arrs[ITEM_LENS][ITEM_ELE_LENS],int arrs_1_index) {
-	int pds[ITEM_LENS][ITEM_ELE_LENS];
+int remove_duplicate(char arrs[ITEM_LENS][ITEM_ELE_LENS],int arrs_1_index, int *arrs_1_index_p) {
+	//重复的路径数组
+	char pds[ITEM_LENS][ITEM_ELE_LENS];
+	//重复路径数组的序号
 	int index = 0;
+	//将二维数组相同的两份 遍历一遍
 	for (int i = 0;i < arrs_1_index;i++) {
 		for (int j = 0;j < arrs_1_index;j++) {
+			//如果第i行遍历数组，并且遍历的一维序号不是i，则进行处理
 			if (strcmp(arrs[i], arrs[j]) == 0 && i!=j) {
 				int k = 0;
+				//遍历存储的重复的数字对数组
 				for (k = 0;k < index;k++) {
-					if ((pds[k][0]==i && pds[k][1]==j) || (pds[k][0]==j && pds[k][1]==i) ) {
+					if ( (pds[k][0]==arrs[i][0] && pds[k][2]==arrs[i][2]) || (pds[k][0]==arrs[i][2] && pds[k][2]==arrs[i][0]) ) {
 						break;
 					}
 				}
 				if (k == index) {
-					pds[index][0] = i;
-					pds[index][1] = j;
+					pds[index][0] = arrs[i][0];
+					pds[index][1] = '-';
+					pds[index][2] = arrs[i][2];
+					pds[index][3] = '\0';
 					index++;
-					printf("%s\n", arrs[i]);
 				}
 			}
 		}
 	}
+	remove_duplicate_arrs(arrs, arrs_1_index,pds,index, arrs_1_index_p);
 }
+
+
+//比对2个数组，去掉重复的二维数组字符串 
+//arrs1 字符串数组,       arrs_1_index 字符串数组结束索引, 
+//arrs2 重复的字符串数组, arrs_2_index 重复的字符串数组结束索引 
+//
+int remove_duplicate_arrs(char arrs1[ITEM_LENS][ITEM_ELE_LENS],int arrs_1_index, 
+						  char arrs2[ITEM_LENS][ITEM_ELE_LENS],int arrs_2_index, 
+						  int *arrs_1_index_p
+						 ) 
+{
+	for (int i = 0;i < arrs_1_index;i++) {
+		for (int j = 0;j < arrs_2_index;j++) {
+			if (strcmp(arrs1[i], arrs2[j]) == 0) {
+				arrs1[i][0] = '\0';
+			}
+		}
+	}
+	
+	for (int i = 0;i < arrs_2_index;i++) {
+		arrs1[arrs_1_index][0] = arrs2[i][0];
+		arrs1[arrs_1_index][1] = arrs2[i][1];
+		arrs1[arrs_1_index][2] = arrs2[i][2];
+		arrs1[arrs_1_index][3] = '\0';
+		arrs_1_index++;
+	}
+	*arrs_1_index_p = arrs_1_index;
+	return 0;
+}
+
+
 
 
 int connective() {
 	char path_arrs[ITEM_LENS][ITEM_ELE_LENS];
 	int arrs_1_index = 0;
 	int arrs_2_index = 0;
+	int *arrs_1_index_p = (int *)malloc(sizeof(int));
 	int p = ITEM_INIT_VAL;
 	int q = ITEM_INIT_VAL;
 	int flag = 1;//控制循环结束标记位
@@ -109,13 +148,22 @@ int connective() {
 		//printf("%s \n", path_arrs[arrs_1_index]);
 	}
 	printf("---------------------------\n");
-	remove_duplicate(path_arrs, arrs_1_index);
+	remove_duplicate(path_arrs, arrs_1_index, arrs_1_index_p);
+	arrs_1_index = *arrs_1_index_p;
 	//is_connect
 	/*
 	char * str_ret=ret_str();
 	printf("%s\n",str_ret);
 	is_connect(path_arrs, ITEM_LENS, ITEM_ELE_LENS,str_ret,arrs_1_index);
 	*/
+	printf("---------------------------\n");
+	
+	for (int i = 0;i <arrs_1_index;i++) {
+		if (path_arrs[i][0]!='\0') {
+			printf("%s\n", path_arrs[i]);
+		}
+	}
+
 	return 0;
 }
 
