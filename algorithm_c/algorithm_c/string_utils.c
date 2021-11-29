@@ -1,5 +1,5 @@
 # include "string_utils.h"
-
+# include <stdlib.h>
 /*
 char c_arrs[ITEM_NUMS][ITEM_ONE_LENS];
 int arr_index = 0;
@@ -79,6 +79,13 @@ char *int_2_char(int val) {
 }
 
 char int_2_char_10(int val) {
+	if (val>9 || val <0) 
+	{
+		printf("error!");
+		system("pause");
+		exit(EXIT_FAILURE);
+		return 0;
+	}
 	return  (char)(val + 48);
 }
 

@@ -1,7 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 #include"ch1_basic.h"
+#include"string_utils.h"
+#include"error_handle.h"
 
 int main() {
 	connective();
@@ -142,28 +145,18 @@ int connective() {
 		}
 	}
 	printf("\n");
-	
 	for (int i = 0;i <arrs_1_index;i++) {
 		printf("%s\n", path_arrs[i]);
-		//printf("%s \n", path_arrs[arrs_1_index]);
 	}
 	printf("---------------------------\n");
 	remove_duplicate(path_arrs, arrs_1_index, arrs_1_index_p);
 	arrs_1_index = *arrs_1_index_p;
-	//is_connect
-	/*
-	char * str_ret=ret_str();
-	printf("%s\n",str_ret);
-	is_connect(path_arrs, ITEM_LENS, ITEM_ELE_LENS,str_ret,arrs_1_index);
-	*/
 	printf("---------------------------\n");
-	
 	for (int i = 0;i <arrs_1_index;i++) {
 		if (path_arrs[i][0]!='\0') {
 			printf("%s\n", path_arrs[i]);
 		}
 	}
-
 	return 0;
 }
 
